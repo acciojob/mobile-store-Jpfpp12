@@ -28,8 +28,7 @@ function AdminPanel() {
             <button
               onClick={() =>
                 handleEdit(product.id, { name: 'Updated Name', price: 999 })
-              }
-            >
+              } >
               Edit
             </button>
           </li>
