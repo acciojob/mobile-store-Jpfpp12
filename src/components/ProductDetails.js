@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { products } from '../data';
 
 function AdminPanel() {
   const [productList, setProductList] = useState(products);
