@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductList from './ProductList.js';
-import ProductDetails from './ProductDetails.js';
-import AdminPanel from './AdminPanel.js';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
+import AdminPanel from './AdminPanel';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         {/* Do not remove the main div */}
         <h1>Online Mobile Store</h1>
         <nav>
-          <a href="/">Home</a> | <a href="/admin">Admin Panel</a>
+          <Link to="/">Home</Link> | <Link to="/admin">Admin Panel</Link>
         </nav>
 
         <Routes>

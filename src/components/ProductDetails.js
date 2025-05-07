@@ -1,41 +1,23 @@
-import React, { useState } from 'react';
-import products from './products.js'; 
-function AdminPanel() {
-  const [productList, setProductList] = useState(products);
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import products from './products';
 
-  const handleDelete = (id) => {
-    const updatedList = productList.filter((product) => product.id !== id);
-    setProductList(updatedList);
-  };
+function ProductDetails() {
+  const { id } = useParams();
+  const product = products.find((p) => p.id === parseInt(id));
 
-  const handleEdit = (id, updatedProduct) => {
-    const updatedList = productList.map((product) =>
-      product.id === id ? { ...product, ...updatedProduct } : product
-    );
-    setProductList(updatedList);
-  };
+  if (!product) {
+    return <p>Product not found.</p>;
+  }
 
   return (
     <div>
-      <h2>Admin Panel</h2>
-      <ul>
-        {productList.map((product) => (
-          <li key={product.id}>
-            <h3>{product.name}</h3>
-            <p>Price: ${product.price}</p>
-            <button onClick={() => handleDelete(product.id)}>Delete</button>
-            <button
-              onClick={() =>
-                handleEdit(product.id, { name: 'Updated Name', price: 999 })
-              }
-            >
-              Edit
-            </button>
-          </li>
-        ))}
-      </ul>
+      <h2>{product.name}</h2>
+      <img src={product.image} alt={product.name} />
+      <p>{product.description}</p>
+      <p>Price: ${product.price}</p>
     </div>
   );
 }
 
-export default AdminPanel;
+export default ProductDetails;
