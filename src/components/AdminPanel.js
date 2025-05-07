@@ -23,12 +23,20 @@ function AdminPanel() {
           <li key={product.id}>
             <h3>{product.name}</h3>
             <p>Price: ${product.price}</p>
-            <button onClick={() => handleDelete(product.id)}>Delete</button>
             <button
+              className="btn"
+              data-testid={`delete-btn-${product.id}`}
+              onClick={() => handleDelete(product.id)}
+            >
+              Delete
+            </button>
+            <button
+              className="btn"
+              data-testid={`edit-btn-${product.id}`}
               onClick={() =>
                 handleEdit(product.id, { name: 'Updated Name', price: 999 })
-              } 
-                >
+              }
+            >
               Edit
             </button>
           </li>
